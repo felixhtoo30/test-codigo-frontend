@@ -1,0 +1,5 @@
+@include media($to: 992) {
+    .xs-none {
+        display: none !important;
+    }
+}
