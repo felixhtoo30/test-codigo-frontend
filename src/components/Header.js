@@ -22,7 +22,7 @@ const Header = () => {
       </div>
       <div className={`menu-item-wrapper ${menuClicked ? "" : "xs-none"}`}>
         <ul>
-          <li className="menu-item"><Link to="/work">Work</Link></li>
+          <li className="menu-item"><Link to="/">Work</Link></li>
           <li className="menu-item">Solutions</li>
           <li className="menu-item">Services</li>
           <li className="menu-item">About us</li>

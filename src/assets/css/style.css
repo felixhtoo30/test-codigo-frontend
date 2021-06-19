@@ -187,6 +187,16 @@ p {
 .menu-item-wrapper img {
   margin: 10px 12px;
 }
+@media screen and (min-width: 992px) {
+  .menu-item-wrapper .menu-social-wrapper {
+    display: none;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: falsepx) {
+  .menu-item-wrapper .menu-social-wrapper {
+    display: none;
+  }
+}
 
 .work {
   margin: 64px auto;
@@ -234,6 +244,15 @@ p {
   position: relative;
   text-decoration: none;
   color: #ffffff;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+}
+.work .work-filter .work-filter-item-wrapper .work-filter-item:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.work .work-filter .work-filter-item-wrapper .work-filter-item:hover img {
+  transform: scale(1.2);
 }
 @media screen and (min-width: 992px) {
   .work .work-filter .work-filter-item-wrapper .work-filter-item {
@@ -258,9 +277,10 @@ p {
   top: 0%;
   left: 0%;
   width: 100%;
-  height: 100%;
+  height: inherit;
   object-fit: cover;
   z-index: -1;
+  transition-duration: 1s;
 }
 .work .work-filter .work-filter-item-wrapper .work-filter-item .info-wrapper {
   padding: 8% 6% 6%;
@@ -289,6 +309,35 @@ p {
   margin: auto 4px;
   background-size: 16px;
   background-position: center;
+}
+
+.work-detail {
+  margin: 64px auto;
+}
+.work-detail .work-detail-wrapper {
+  width: 90%;
+  margin: auto;
+}
+.work-detail .work-detail-wrapper .work-detail-left {
+  display: flex;
+  flex-flow: column;
+}
+.work-detail .work-detail-wrapper .work-detail-left .work-detail-name {
+  font-size: 3em;
+  line-height: 1em;
+}
+.work-detail .work-detail-wrapper .work-detail-left .work-detail-content {
+  margin: 4em auto;
+  font-family: "Questrial";
+}
+.work-detail .work-detail-wrapper .work-detail-left .work-detail-feature-wrapper {
+  display: flex;
+}
+.work-detail .work-detail-wrapper .work-detail-left .work-detail-feature-wrapper .work-detail-feature-name {
+  border-right: 1px solid #bbbbbb;
+}
+.work-detail .work-detail-wrapper .work-detail-left .work-detail-feature-wrapper .work-detail-feature-content {
+  font-family: "Questrial";
 }
 
 footer .footer-header {

@@ -1,3 +1,28 @@
-.work-detail-section {
-    
+.work-detail {
+    margin: 64px auto;
+    .work-detail-wrapper {
+        width: 90%;
+        margin: auto;
+        .work-detail-left {
+            display: flex;
+            flex-flow: column;
+            .work-detail-name {
+                font-size: $font-hero;
+                line-height: 1em;
+            }
+            .work-detail-content {
+                margin: 4em auto;
+                font-family: "Questrial";
+            }
+            .work-detail-feature-wrapper {
+                display: flex;
+                .work-detail-feature-name {
+                    border-right:1px solid #bbbbbb;
+                }
+                .work-detail-feature-content {
+                    font-family: "Questrial";
+                }
+            }
+        }
+    }
 }
