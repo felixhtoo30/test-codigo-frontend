@@ -1,0 +1,20 @@
+.custom-slick {
+  .slick-dots {
+    li {
+      &.slick-active {
+        button {
+          &:before {
+            color: $color-primary;
+          }
+        }
+      }
+      button {
+        &:before {
+          color: $color-gray;
+          font-size: 13px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

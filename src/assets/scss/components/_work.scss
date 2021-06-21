@@ -9,20 +9,66 @@
     padding: 56px 0px 84px;
   }
   .work-board {
-    width: 85%;
-    margin: auto;
+    display: none;
+    @include media($from: 576) {
+      width: 85%;
+      margin: auto;
+      display: block;
+    }
+    @include media($from: 992) {
+      display: flex;
+      align-items: flex-end;
+    }
+    .work-category {
+      .work-category-item {
+        position: relative;
+        cursor: pointer;
+        padding: 8px 12px;
+        &::before {
+          content: "";
+          width: 0px;
+          height: 1px;
+          position: absolute;
+          top: 48%;
+          background: $color-primary;
+          transition: width 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+        // &:hover,
+        &.active {
+          &::before {
+            width: 18px;
+            transition-delay: 0.1s;
+          }
+          .work-category-text {
+            padding-left: 24px;
+            font-weight: bold;
+          }
+        }
+        .work-category-text {
+          transition-duration: 0.4s;
+        }
+      }
+    }
     .work-legend {
       margin: 54px auto;
+      @include media($from: 992) {
+        margin: 0px;
+      }
       .work-legend-header {
         text-transform: uppercase;
         font-size: 10px;
         letter-spacing: 2px;
       }
       .work-legend-item-wrapper {
-        font-family: "Questrial";
-        font-size: $font-sm;
+        width: 200px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
         border-left: 1px solid #000;
+        margin-top: 12px;
+        padding: 6px 0px;
         .work-legend-item {
+          width: 38%;
           display: flex;
           align-items: center;
           margin: 4px auto;
@@ -31,6 +77,23 @@
           }
         }
       }
+    }
+  }
+  .work-board-modal {
+    display: fixed;
+    .work-board-float-btn {
+      position:fixed;
+      bottom: 5%;
+      left: 5%;
+      width: 82px;
+      height: 82px;
+      background: $color-primary;
+      color: $color-white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition-duration: 0.5s;
     }
   }
   .work-filter {
@@ -44,20 +107,25 @@
         text-decoration: none;
         color: $color-white;
         cursor: pointer;
-        transition-duration: 0.3s;
         overflow: hidden;
+        transition-duration: 0.6s;
         &:hover {
-          background-color: rgba(0,0,0, 0.4);
+          background-color: rgba(0, 0, 0, 0.4);
           img {
             transform: scale(1.2);
           }
         }
         @include media($from: 992) {
-            width: 60%;
-            height: 420px;
-            &:nth-child(even) {
-                width: 40%;
-            }
+          width: 60%;
+          height: 420px;
+          &:nth-child(even) {
+            width: 40%;
+          }
+          &:nth-child(3),
+          &:nth-child(4),
+          &:nth-child(5) {
+            width: 33.33%;
+          }
         }
         img {
           position: absolute;
@@ -67,7 +135,8 @@
           height: inherit;
           object-fit: cover;
           z-index: -1;
-          transition-duration: 1s;
+          transition-duration: 0.8s;
+          transition-timing-function: ease-out;
         }
         .info-wrapper {
           padding: 8% 6% 6%;
@@ -77,14 +146,10 @@
           .info-work-category {
             font-family: "Questrial";
           }
-          .info-work-name {
-            font-size: $font-lg;
-          }
           .info-work-platform-wrapper {
             display: flex;
             margin-top: auto;
             .info-work-platform {
-              font-size: $font-lg;
               width: 36px;
               height: 36px;
               background-repeat: no-repeat;

@@ -1,27 +1,67 @@
 footer {
-    .footer-header {
-        font-size: 2.4em;
-        color: $color-primary;
-        text-align: center;
-        margin: 1.2em auto;
+  margin-top: 100px;
+  .footer-header {
+    font-size: 2.4em;
+    color: $color-primary;
+    text-align: center;
+    margin: 1.2em auto;
+  }
+  .footer-trust {
+    width: 94%;
+    margin: 4rem auto;
+    @include media($from: 992) {
+      width: 94%;
+      display: flex;
+      align-items: stretch;
     }
-    .footer-trust {
-        width: 94%;
-        margin: auto;
-        .footer-trust-item {
-            padding: 12px 0px;
-            margin-bottom: 14px;
-            border-bottom: 1px solid #dddddd;
-            .footer-trust-item-head {
-                font-weight: bold;
-                font-size: 1.5em;
-                img {
-                    float: right;
-                }
-            }
-            .footer-trust-item-tagline {
-                font-family: 'Questrial';
-            }
+    .footer-trust-item {
+      padding: 12px 0px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid $color-light-gray;
+      cursor: pointer;
+      @include media($from: 992) {
+        width: 25%;
+        padding: 12px 24px 12px;
+        border-bottom: none;
+        display: flex;
+        flex-flow: column;
+        justify-content: start;
+        align-items: center;
+        &:not(:last-child) {
+          border-right: 1px solid $color-light-gray;
         }
+      }
+      &:hover {
+        .footer-trust-item-head {
+          color: $color-primary;
+          .arrow {
+            margin-left: 32px;
+          }
+        }
+      }
+      .footer-trust-item-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition-duration: 0.8s;
+        @include media($from: 992) {
+          justify-content: flex-start;
+        }
+        .arrow {
+          margin-left: 16px;
+          transition-duration: 0.6s;
+        }
+      }
     }
+  }
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    .img {
+      margin: 10px 12px;
+    }
+    .p-fill {
+      fill: black;
+    }
+  }
 }

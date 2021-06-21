@@ -17,13 +17,70 @@ p {
     margin: 0;
 }
 
-.font-hero {
-    font-size: $font-hero;
+.font-4xl {
+    font-size: 13vw;
     line-height: 1.1em;
+    @include media($from: 576) {
+        font-size: 6.5vw;
+    }
+    @include media($from: 992) {
+        font-size: 4em;
+    }
 }
 
-.font-header {
-    font-size: $font-header;
+.font-3xl {
+    font-size: 3em;
+    line-height: 1.1em;
+    @include media($from: 992) {
+        font-size: 3.8em;
+    }
+}
+
+.font-2xl {
+    font-size: 2em;
+    @include media($from: 992) {
+        font-size: 2.4em;
+    }
+}
+
+.font-xl {
+    font-size: 1.8em;
+    @include media($from: 992) {
+        font-size: 2em;
+    }
+}
+
+.font-lg {
+    font-size: 1.35em;
+    @include media($from: 992) {
+        font-size: 1.5em;
+    }
+}
+
+.font-md {
+    font-size: 1em;
+    @include media($from: 992) {
+        font-size: 1.25em;
+    }
+}
+
+.font-sm {
+    font-size: 0.8em;
+    @include media($from: 992) {
+        font-size: 1em;
+    }
+}
+
+.font-xs {
+    font-size: 0.7em;
+}
+
+.font-normal {
+    font-family: 'Questrial';
+}
+
+.font-bold {
+    font-weight: bold;
 }
 
 .color-primary {

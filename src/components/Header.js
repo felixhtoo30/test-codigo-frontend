@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo-codigo-red.svg";
-import socialFb from "../assets/images/social-facebook-white.svg";
-import socialTwitter from "../assets/images/social-twitter-white.svg";
-import socialInstagram from "../assets/images/social-instagram-white.svg";
-import socialLinkedIn from "../assets/images/social-linkedIn-white.svg";
+import {
+  logo,
+  SocialFb,
+  SocialTwitter,
+  SocialInstagram,
+  SocialLinkedIn,
+} from "./Images";
 
 const Header = () => {
   const [menuClicked, setMenuClicked] = useState(false);
@@ -23,18 +25,18 @@ const Header = () => {
       <div className={`menu-item-wrapper ${menuClicked ? "" : "xs-none"}`}>
         <ul>
           <li className="menu-item"><Link to="/">Work</Link></li>
-          <li className="menu-item">Solutions</li>
-          <li className="menu-item">Services</li>
-          <li className="menu-item">About us</li>
-          <li className="menu-item">Blog</li>
-          <li className="menu-item" id="rq">Request a quote</li>
-          <li className="menu-item" id="lc">Let's chat</li>
+          <li className="menu-item"><Link to="/">Solutions</Link></li>
+          <li className="menu-item"><Link to="/">Services</Link></li>
+          <li className="menu-item"><Link to="/">About us</Link></li>
+          <li className="menu-item"><Link to="/">Blog</Link></li>
+          <li className="menu-item" id="rq"><Link to="/">Request a quote</Link></li>
+          <li className="menu-item" id="lc"><Link to="/">Let's chat</Link></li>
         </ul>
         <div className="menu-social-wrapper">
-          <img src={socialFb} alt="" width="24" height="18" />
-          <img src={socialTwitter} alt="" width="24" height="18" />
-          <img src={socialInstagram} alt="" width="24" height="18" />
-          <img src={socialLinkedIn} alt="" width="24" height="18" />
+          <SocialFb fill="white" width="24" height="18" className="img" />
+          <SocialTwitter fill="white" width="24" height="18" className="img" />
+          <SocialInstagram fill="white" width="24" height="18" className="img" />
+          <SocialLinkedIn fill="white" width="24" height="18" className="img" />
         </div>
       </div>
     </div>
