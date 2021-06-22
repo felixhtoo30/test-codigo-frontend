@@ -28,21 +28,20 @@
     top: 0%;
     left: 0%;
     &.expand {
-      width: 45%;
+      width: 68vw;
       z-index: 500;
-      background: $color-white;
       height: 100vh;
       @include media($from: 576) {
-        width: 38%;
+        width: 40vw;
       }
       @include media($from: 768) {
-        width: 38%;
+        width: 38vw;
       }
       @include media($from: 992) {
-        width: 28%;
+        width: 26vw;
       }
       @include media($from: 1200) {
-        width: 25%;
+        width: 25vw;
       }
       .work-board-sidebar-list {
         width: 100%;
@@ -61,29 +60,15 @@
         }
       }
       .work-board-float-btn {
-        left: 82%;
-        
-        @include media($from: 768) {
-          left: 86%;
+        left: 0%;
+        transform: translateX(58vw);
+        transition: transform 0.5s ease;
+        @include media($from: 576) {
+          transform: translateX(32vw);
         }
         @include media($from: 992) {
-          left: 86%;
+          transform: translateX(21.5vw);
         }
-        @include media($from: 1200) {
-          // left: 88%;
-        transform: translateX(420%);
-        transition: all 0.5s linear;
-        }
-        // transform: translateX(300%);
-        // @include media($from: 768) {
-        //   transform: translateX(344%);
-        // }
-        // @include media($from: 992) {
-        //   transform: translateX(258%);
-        // }
-        // @include media($from: 1200) {
-        //   transform: translateX(280%);
-        // }
       }
     }
     .work-board-sidebar-list {
@@ -93,6 +78,7 @@
       width: 0;
       height: 100vh;
       padding-left: 20px;
+      background: $color-white;
       overflow-x: hidden;
       overflow-y: scroll;
       transform: translateX(-100%);
@@ -116,7 +102,7 @@
       @include media($from: 992) {
         left: -240%;
         bottom: 42%;
-        transform: translateX(0%);
+        transform: translateX(0vw);
         transition: transform 0.5s ease;
         span {
           transform: rotate(-90deg) translateY(18px);

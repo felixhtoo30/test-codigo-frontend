@@ -152,6 +152,10 @@ p {
     display: none !important;
   }
 }
+.arrow-back {
+  transform: scaleX(-1);
+}
+
 @keyframes fadein-up {
   0% {
     opacity: 0;
@@ -162,24 +166,55 @@ p {
     transform: translateY(0%);
   }
 }
-.header {
+@keyframes fadein-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes workArrowOff {
+  0% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(0%);
+    display: none;
+  }
+}
+@keyframes workArrowOn {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+header {
+  width: 100%;
   height: 72px;
+}
+
+.header {
   position: fixed;
   width: 100%;
+  height: inherit;
   top: 0%;
   left: 0%;
   background-color: white;
   z-index: 100;
+  animation: fadein-down 1s;
 }
 @media screen and (min-width: 992px) {
   .header {
-    position: static;
     height: 100px;
   }
 }
 @media screen and (min-width: 992px) and (max-width: falsepx) {
   .header {
-    position: static;
     height: 100px;
   }
 }
@@ -220,6 +255,28 @@ p {
   color: #ffffff;
   z-index: 80;
 }
+.header .back-btn {
+  text-decoration: none;
+  color: #000000;
+}
+.header .back-btn .back-txt {
+  margin-left: 10px;
+  padding: 10px 0px;
+  position: relative;
+}
+.header .back-btn .back-txt::after {
+  content: "";
+  width: 0px;
+  height: 0.8px;
+  background: #000000;
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  transition: width 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.header .back-btn .back-txt:hover::after {
+  width: 100%;
+}
 
 .menu-item-wrapper {
   width: 100%;
@@ -256,7 +313,7 @@ p {
     font-family: "Questrial";
     height: inherit;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
   }
 }
 @media screen and (min-width: 992px) and (max-width: falsepx) {
@@ -265,7 +322,7 @@ p {
     font-family: "Questrial";
     height: inherit;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
   }
 }
 .menu-item-wrapper ul li.menu-item {
@@ -273,6 +330,7 @@ p {
   text-align: center;
   color: #ffffff;
   padding: 0.4em;
+  margin: 0em 1.8em;
   cursor: pointer;
   position: relative;
 }
@@ -281,7 +339,11 @@ p {
 }
 @media screen and (min-width: 992px) {
   .menu-item-wrapper ul li.menu-item {
+    margin: 0em 1.4em;
     color: #000000;
+  }
+  .menu-item-wrapper ul li.menu-item:not(#rq) {
+    position: relative;
   }
   .menu-item-wrapper ul li.menu-item:not(#rq)::after {
     content: "";
@@ -313,7 +375,11 @@ p {
 }
 @media screen and (min-width: 992px) and (max-width: falsepx) {
   .menu-item-wrapper ul li.menu-item {
+    margin: 0em 1.4em;
     color: #000000;
+  }
+  .menu-item-wrapper ul li.menu-item:not(#rq) {
+    position: relative;
   }
   .menu-item-wrapper ul li.menu-item:not(#rq)::after {
     content: "";
@@ -409,49 +475,48 @@ p {
   left: 0%;
 }
 .work .work-board-sidebar.expand {
-  width: 45%;
+  width: 68vw;
   z-index: 500;
-  background: #ffffff;
   height: 100vh;
 }
 @media screen and (min-width: 576px) {
   .work .work-board-sidebar.expand {
-    width: 38%;
+    width: 40vw;
   }
 }
 @media screen and (min-width: 576px) and (max-width: falsepx) {
   .work .work-board-sidebar.expand {
-    width: 38%;
+    width: 40vw;
   }
 }
 @media screen and (min-width: 768px) {
   .work .work-board-sidebar.expand {
-    width: 38%;
+    width: 38vw;
   }
 }
 @media screen and (min-width: 768px) and (max-width: falsepx) {
   .work .work-board-sidebar.expand {
-    width: 38%;
+    width: 38vw;
   }
 }
 @media screen and (min-width: 992px) {
   .work .work-board-sidebar.expand {
-    width: 28%;
+    width: 26vw;
   }
 }
 @media screen and (min-width: 992px) and (max-width: falsepx) {
   .work .work-board-sidebar.expand {
-    width: 28%;
+    width: 26vw;
   }
 }
 @media screen and (min-width: 1200px) {
   .work .work-board-sidebar.expand {
-    width: 25%;
+    width: 25vw;
   }
 }
 @media screen and (min-width: 1200px) and (max-width: falsepx) {
   .work .work-board-sidebar.expand {
-    width: 25%;
+    width: 25vw;
   }
 }
 .work .work-board-sidebar.expand .work-board-sidebar-list {
@@ -487,38 +552,28 @@ p {
   }
 }
 .work .work-board-sidebar.expand .work-board-float-btn {
-  left: 82%;
+  left: 0%;
+  transform: translateX(58vw);
+  transition: transform 0.5s ease;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 576px) {
   .work .work-board-sidebar.expand .work-board-float-btn {
-    left: 86%;
+    transform: translateX(32vw);
   }
 }
-@media screen and (min-width: 768px) and (max-width: falsepx) {
+@media screen and (min-width: 576px) and (max-width: falsepx) {
   .work .work-board-sidebar.expand .work-board-float-btn {
-    left: 86%;
+    transform: translateX(32vw);
   }
 }
 @media screen and (min-width: 992px) {
   .work .work-board-sidebar.expand .work-board-float-btn {
-    left: 86%;
+    transform: translateX(21.5vw);
   }
 }
 @media screen and (min-width: 992px) and (max-width: falsepx) {
   .work .work-board-sidebar.expand .work-board-float-btn {
-    left: 86%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .work .work-board-sidebar.expand .work-board-float-btn {
-    transform: translateX(420%);
-    transition: all 0.5s linear;
-  }
-}
-@media screen and (min-width: 1200px) and (max-width: falsepx) {
-  .work .work-board-sidebar.expand .work-board-float-btn {
-    transform: translateX(420%);
-    transition: all 0.5s linear;
+    transform: translateX(21.5vw);
   }
 }
 .work .work-board-sidebar .work-board-sidebar-list {
@@ -528,6 +583,7 @@ p {
   width: 0;
   height: 100vh;
   padding-left: 20px;
+  background: #ffffff;
   overflow-x: hidden;
   overflow-y: scroll;
   transform: translateX(-100%);
@@ -553,7 +609,7 @@ p {
   .work .work-board-sidebar .work-board-float-btn {
     left: -240%;
     bottom: 42%;
-    transform: translateX(0%);
+    transform: translateX(0vw);
     transition: transform 0.5s ease;
   }
   .work .work-board-sidebar .work-board-float-btn span {
@@ -565,7 +621,7 @@ p {
   .work .work-board-sidebar .work-board-float-btn {
     left: -240%;
     bottom: 42%;
-    transform: translateX(0%);
+    transform: translateX(0vw);
     transition: transform 0.5s ease;
   }
   .work .work-board-sidebar .work-board-float-btn span {
@@ -783,6 +839,67 @@ p {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+.work-detail .work-arrow-btn {
+  position: fixed;
+  top: 50%;
+  background: #d5333e;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.5s ease, box-shadow 0.6s ease;
+}
+.work-detail .work-arrow-btn.off {
+  animation: workArrowOff 0.5s;
+  animation-fill-mode: forwards;
+}
+.work-detail .work-arrow-btn.work-prev {
+  left: -5%;
+}
+@media screen and (min-width: 1200px) {
+  .work-detail .work-arrow-btn.work-prev {
+    left: -3.5%;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: falsepx) {
+  .work-detail .work-arrow-btn.work-prev {
+    left: -3.5%;
+  }
+}
+.work-detail .work-arrow-btn.work-prev:hover {
+  transform: scale(120%);
+  box-shadow: 5px 7px 16px rgba(0, 0, 0, 0.2);
+}
+.work-detail .work-arrow-btn.work-prev svg {
+  transform: translateX(120%) scaleX(-1);
+}
+.work-detail .work-arrow-btn.work-next {
+  right: -5%;
+}
+@media screen and (min-width: 1200px) {
+  .work-detail .work-arrow-btn.work-next {
+    right: -3.5%;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: falsepx) {
+  .work-detail .work-arrow-btn.work-next {
+    right: -3.5%;
+  }
+}
+.work-detail .work-arrow-btn.work-next:hover {
+  transform: scale(120%);
+  box-shadow: -5px 7px 16px rgba(0, 0, 0, 0.2);
+}
+.work-detail .work-arrow-btn.work-next svg {
+  transform: translateX(-120%);
+}
+.work-detail .work-arrow-btn svg .p-fill {
+  fill: #ffffff;
 }
 
 footer {

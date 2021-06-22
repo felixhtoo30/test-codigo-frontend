@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -10,6 +10,7 @@ import {
   imgWDKIWI04,
   imgWDKIWI05,
   imgKIWI,
+  ImgArrow,
 } from "./Images";
 
 const WorkDetailName = () => (
@@ -84,8 +85,20 @@ const SmScreenWorkDetail = () => {
 };
 
 const LgScreenWorkDetail = () => {
+  const workDetailRef = useRef();
+  const [showWorkArrows, setShowWorkArrows] = useState(true);
+
+  const handleScroll = () => {
+      setShowWorkArrows(window.pageYOffset < workDetailRef.current.offsetHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
   return (
-    <section className="work-detail">
+    <section className="work-detail" ref={workDetailRef}>
       <section className="work-detail-wrapper row justify-content-evenly">
         <div className="work-detail-left col-5">
           <WorkDetailName />
@@ -96,6 +109,16 @@ const LgScreenWorkDetail = () => {
           <WorkDetailImage />
         </div>
       </section>
+      {(
+        <>
+          <div className={`work-prev work-arrow-btn ${ showWorkArrows ? 'on' : 'off'}`}>
+            <ImgArrow width="16" height="18" />
+          </div>
+          <div className={`work-next work-arrow-btn ${ showWorkArrows ? 'on' : 'off'}`}>
+            <ImgArrow alt="" width="16" height="18" />
+          </div>
+        </>
+      ) }
     </section>
   );
 };
@@ -111,6 +134,7 @@ const WorkDetail = () => {
     window.addEventListener("resize", handleScreenSize);
     return () => window.removeEventListener("resize", handleScreenSize);
   }, []);
+
   return screenWidth >= 992 ? <LgScreenWorkDetail /> : <SmScreenWorkDetail />;
 };
 

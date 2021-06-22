@@ -1,5 +1,9 @@
 @include media($to: 992) {
-    .xs-none {
-        display: none !important;
-    }
+  .xs-none {
+    display: none !important;
+  }
+}
+
+.arrow-back {
+  transform: scaleX(-1);
 }

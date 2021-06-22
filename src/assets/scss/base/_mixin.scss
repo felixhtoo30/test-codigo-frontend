@@ -33,8 +33,19 @@
   }
 }
 
-// @mixin animate-float($sidebar-w) {
-//   // @if $sidebar-w > 0 {
-//   // }
-//     left: (($sidebar-w)-7)%;
-// }
+@mixin anim-underline {
+  position: relative;
+  &::after {
+    content: "";
+    width: 0px;
+    height: 0.8px;
+    background: $color-dark;
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    transition: width 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}

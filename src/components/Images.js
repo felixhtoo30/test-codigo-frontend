@@ -20,6 +20,8 @@ import imgHBO from "../assets/images/HBO-0@2x.jpg";
 import imgFWD from "../assets/images/FWD-0@2x.jpg";
 import imgKIWI from "../assets/images/KIWI-0@2x.jpg";
 import imgArrow from "../assets/images/arrow-red.svg";
+import { ReactComponent as ImgArrow } from "../assets/images/arrow-red.svg";
+
 
 // Work Detail Image
 import imgWDKIWI01 from "../assets/images/KIWI-1.png";
@@ -35,6 +37,7 @@ export {
   SocialInstagram,
   SocialLinkedIn,
   imgArrow,
+  ImgArrow,
   icoApp,
   icoWeb,
   icoCMS,

@@ -6,11 +6,13 @@ import Footer from "./components/Footer";
 
 const routes = [
   {
+    key: "work",
     path: "/",
     exact: true,
     main: () => <Work />,
   },
   {
+    key: "work_detail",
     path: "/work-detail",
     main: () => <WorkDetail />,
   },

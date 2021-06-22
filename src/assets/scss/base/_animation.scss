@@ -1,10 +1,40 @@
 @keyframes fadein-up {
-    0% {
-      opacity: 0;
-      transform: translateY(10%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
   }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fadein-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes workArrowOff {
+  0% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(0%);
+    display: none;
+  }
+}
+
+@keyframes workArrowOn {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
