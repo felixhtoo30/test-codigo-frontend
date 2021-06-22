@@ -147,11 +147,50 @@ const Work = () => {
   };
 
   const WorkBoardSidebarElement = () => {
+    const [expandSidebar, setExpandSidebar] = useState(false);
     return (
-      <section className="work-board-modal">
-        <div className="work-board-sidebar"></div>
-        <div className="work-board-float-btn">
-          <span>Filter</span>
+      <section className={`work-board-sidebar ${expandSidebar ? 'expand' : ''}`}>
+      <section className={`work-board-sidebar-list`}>
+          <section className="work-category">
+            {Object.entries(workCategories).map(([ctgId, category]) => (
+              <div
+                className={`work-category-item ${
+                  activeCategory === ctgId ? "active" : ""
+                }`}
+                key={ctgId}
+                id={ctgId}
+                onClick={() => handleWorkFilters(ctgId)}
+              >
+                <p className="work-category-text font-md font-normal">
+                  {category}
+                </p>
+              </div>
+            ))}
+          </section>
+          <section className="work-legend">
+            <p className="work-legend-header">Legend</p>
+            <div className="work-legend-item-wrapper font-xs font-normal">
+              <div className="work-legend-item">
+                <img src={icoApp} alt="" width="18" height="18" />
+                App
+              </div>
+              <div className="work-legend-item">
+                <img src={icoWeb} alt="" width="18" height="18" />
+                Web
+              </div>
+              <div className="work-legend-item">
+                <img src={icoCMS} alt="" width="18" height="18" />
+                CMS
+              </div>
+              <div className="work-legend-item">
+                <img src={icoUIUX} alt="" width="18" height="18" />
+                UIUX
+              </div>
+            </div>
+          </section>
+        </section>
+        <div className="work-board-float-btn" onClick={() => setExpandSidebar(!expandSidebar)}>
+          {(expandSidebar) ? <i className="bi bi-x-lg"></i> : <span>Filter</span>}
         </div>
       </section>
     );
@@ -221,7 +260,7 @@ const Work = () => {
           </section>
         )}
       </section>
-      <WorkBoardSidebarElement  />
+      <WorkBoardSidebarElement />
     </section>
   );
 };
