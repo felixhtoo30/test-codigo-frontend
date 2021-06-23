@@ -21,53 +21,53 @@
       display: flex;
       align-items: flex-end;
     }
+    @include workBoardElements;
   }
 
   .work-board-sidebar {
     position: fixed;
     top: 0%;
     left: 0%;
+    width: 68vw;
+    transform: translateX(-68vw);
+    height: 100vh;
+    z-index: 500;
+    transition: all 0.8s ease;
+    @include media($from: 576) {
+      width: 40vw;
+      transform: translateX(-40vw);
+    }
+    @include media($from: 768) {
+      width: 38vw;
+      transform: translateX(-38vw);
+    }
+    @include media($from: 992) {
+      width: 26vw;
+      transform: translateX(-26vw);
+    }
+    @include media($from: 1200) {
+      width: 25vw;
+      transform: translateX(-25vw);
+    }
+    @include workBoardElements;
+    &.off {
+      display: none;
+    }
     &.expand {
-      width: 68vw;
-      z-index: 500;
-      height: 100vh;
-      @include media($from: 576) {
-        width: 40vw;
-      }
-      @include media($from: 768) {
-        width: 38vw;
-      }
-      @include media($from: 992) {
-        width: 26vw;
-      }
-      @include media($from: 1200) {
-        width: 25vw;
-      }
-      .work-board-sidebar-list {
-        width: 100%;
-        box-shadow: 0 7px 25px 2px rgba(0, 0, 0, 0.17),
-          0 10px 80px 5px rgba(0, 0, 0, 0.17);
-        transform: translateX(0%);
-        transition: transform 0.5s ease-out;
-        @include media($from: 992) {
-          display: flex;
-          flex-flow: column;
-          justify-content: space-around;
-          padding-left: 42px;
-        }
-        @include media($from: 1200) {
-          overflow: hidden;
-        }
-      }
+      transform: translateX(0vw);
+      box-shadow: 0 7px 25px 2px rgba(0, 0, 0, 0.17),
+        0 10px 80px 5px rgba(0, 0, 0, 0.17);
       .work-board-float-btn {
-        left: 0%;
-        transform: translateX(58vw);
-        transition: transform 0.5s ease;
+        transform: translateX(-16vw);
+        transition: transform 0.3s ease;
         @include media($from: 576) {
-          transform: translateX(32vw);
+          transform: translateX(-11vw);
+        }
+        @include media($from: 576) {
+          transform: translateX(-9vw);
         }
         @include media($from: 992) {
-          transform: translateX(21.5vw);
+          transform: translateX(-3vw);
         }
       }
     }
@@ -76,17 +76,25 @@
       top: 0%;
       left: 0%;
       width: 0;
-      height: 100vh;
+      width: 100%;
+      height: inherit;
       padding-left: 20px;
       background: $color-white;
       overflow-x: hidden;
       overflow-y: scroll;
-      transform: translateX(-100%);
-      transition: transform 0.5s ease;
+      @include media($from: 992) {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+        padding-left: 42px;
+      }
+      @include media($from: 1200) {
+        overflow: hidden;
+      }
     }
     .work-board-float-btn {
       position: absolute;
-      left: 120%;
+      left: 110%;
       bottom: 5%;
       display: flex;
       justify-content: center;
@@ -99,74 +107,16 @@
       z-index: 550;
       cursor: pointer;
       transition: all 0.5s ease;
+      animation: filter-full 1s;
       @include media($from: 992) {
-        left: -240%;
+        left: 100%;
         bottom: 42%;
-        transform: translateX(0vw);
+        transform: translateX(-3vw);
         transition: transform 0.5s ease;
+        animation: filter-half 1s;
         span {
           transform: rotate(-90deg) translateY(18px);
           transition: transform 0.5s linear;
-        }
-      }
-    }
-  }
-
-  .work-category {
-    .work-category-item {
-      position: relative;
-      cursor: pointer;
-      padding: 8px 12px 8px 0px;
-      &::before {
-        content: "";
-        width: 0px;
-        height: 1px;
-        position: absolute;
-        top: 48%;
-        background: $color-primary;
-        transition: width 0.4s cubic-bezier(0.2, 1, 0.2, 1);
-      }
-      // &:hover,
-      &.active {
-        &::before {
-          width: 18px;
-          transition-delay: 0.1s;
-        }
-        .work-category-text {
-          padding-left: 24px;
-          font-weight: bold;
-        }
-      }
-      .work-category-text {
-        transition-duration: 0.4s;
-      }
-    }
-  }
-  .work-legend {
-    margin: 54px auto;
-    @include media($from: 992) {
-      margin: 0px;
-    }
-    .work-legend-header {
-      text-transform: uppercase;
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
-    .work-legend-item-wrapper {
-      width: 200px;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: flex-start;
-      border-left: 1px solid #000;
-      margin-top: 12px;
-      padding: 6px 0px;
-      .work-legend-item {
-        width: 38%;
-        display: flex;
-        align-items: center;
-        margin: 4px auto;
-        img {
-          margin-right: 10px;
         }
       }
     }
@@ -185,6 +135,9 @@
         cursor: pointer;
         overflow: hidden;
         transition-duration: 0.6s;
+        &.off {
+          display: none;
+        }
         &:hover {
           background-color: rgba(0, 0, 0, 0.4);
           img {

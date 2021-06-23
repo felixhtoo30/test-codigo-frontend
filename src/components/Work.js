@@ -1,114 +1,11 @@
-import React, { useState } from "react";
-import {
-  icoApp,
-  icoWeb,
-  icoCMS,
-  icoUIUX,
-  imgWTS,
-  imgRTT,
-  imgPAO,
-  imgYM,
-  imgTAP,
-  imgFURAMA,
-  imgHBO,
-  imgFWD,
-  imgKIWI,
-} from "./Images";
+import React, { useRef, useState, useEffect } from "react";
+import { workCategories, workLegends, workFilters } from "../data";
 
 const Work = () => {
-  // test with category id ----->
-  const workCategories = {
-    all: "All",
-    food: "Food & Beverage",
-    media: "Media",
-    transport: "Transport & Logistics",
-    banking: "Banking & Finance",
-    lifestyle: "Lifestyle",
-    incube: "Co-incubation",
-    health: "Healthcare",
-    retail: "Retail & Entertainment",
-    telco: "Telco",
-    others: "Others",
-    startup: "Start-ups",
-  };
-
-  const workFilters = [
-    {
-      name: "KIWI Auto Marketplace",
-      category: "Others, Start-ups",
-      ctgIds: ["others", "startup"],
-      platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
-      img: imgKIWI,
-      url: "/work-detail",
-      isShow: true,
-    },
-    {
-      name: "Woodlands Transport",
-      category: "Transport & Logistics",
-      ctgIds: ["transport"],
-      platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
-      img: imgWTS,
-      isShow: true,
-    },
-    {
-      name: "HBO Go",
-      category: "Retail & Entertainment",
-      ctgIds: ["retail"],
-      platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
-      img: imgHBO,
-      isShow: true,
-    },
-    {
-      name: "Ready to Travel (SATS)",
-      category: "Lifestyle, Retail & Entertainment, Start-ups",
-      ctgIds: ["lifestyle", "retail", "startup"],
-      platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
-      img: imgRTT,
-      isShow: true,
-    },
-    {
-      name: "OCBC Pay Anyone",
-      category: "Transport & Logistics",
-      ctgIds: ["transport"],
-      platforms: [icoApp, icoCMS],
-      img: imgPAO,
-      isShow: true,
-    },
-    {
-      name: "Yoga Movement",
-      category: "Lifestyle",
-      ctgIds: ["lifestyle"],
-      platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
-      img: imgYM,
-      isShow: true,
-    },
-    {
-      name: "TAP Ride Hailing",
-      category: "Transport & Logistics",
-      ctgIds: ["transport"],
-      platforms: [icoApp],
-      img: imgTAP,
-      isShow: true,
-    },
-    {
-      name: "Furama Hotels",
-      category: "Lifestyle",
-      ctgIds: ["lifestyle"],
-      platforms: [icoApp, icoCMS],
-      img: imgFURAMA,
-      isShow: true,
-    },
-    {
-      name: "FWD Insurance",
-      category: "Lifestyle",
-      ctgIds: ["lifestyle"],
-      platforms: [icoApp, icoCMS, icoUIUX],
-      img: imgFWD,
-      isShow: true,
-    },
-  ];
   const [activeCategory, setActiveCategory] = useState("all");
   const [workFilterList, setWorkFilterList] = useState(workFilters);
+  const workFilterRef = useRef();
+  const [showSidebarFloat, setShowSidebarFloat] = useState(false);
   const isResultNone = (object) => object.isShow === false;
 
   const handleWorkFilters = (ctgId) => {
@@ -125,9 +22,22 @@ const Work = () => {
     );
   };
 
+  const handleScroll = () => {
+    setShowSidebarFloat(window.pageYOffset > workFilterRef.current.offsetTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.addEventListener("scroll", handleScroll);
+  });
+
   const WorkFilterDisplayElement = (workFilter) => {
     return (
-      <a className="work-filter-item" href={workFilter.url}>
+      <a
+        className={`work-filter-item ${workFilter.isShow ? "" : "off"}`}
+        href={workFilter.url}
+      >
+        <h1>{console.log(workFilter.isShow)}</h1>
         <img src={workFilter.img} alt="" />
         <div className="info-wrapper">
           <p className="info-work-category">{workFilter.category}</p>
@@ -149,9 +59,14 @@ const Work = () => {
   const WorkBoardSidebarElement = () => {
     const [expandSidebar, setExpandSidebar] = useState(false);
     return (
-      <section className={`work-board-sidebar ${expandSidebar ? 'expand' : ''}`}>
-      <section className={`work-board-sidebar-list`}>
-          <section className="work-category">
+      <section
+        className={`work-board-sidebar 
+          ${expandSidebar ? "expand" : ""} 
+          ${showSidebarFloat ? "" : "off"}
+        `}
+      >
+        <section className={`work-board-sidebar-list`}>
+          <section className={`work-category`}>
             {Object.entries(workCategories).map(([ctgId, category]) => (
               <div
                 className={`work-category-item ${
@@ -170,27 +85,20 @@ const Work = () => {
           <section className="work-legend">
             <p className="work-legend-header">Legend</p>
             <div className="work-legend-item-wrapper font-xs font-normal">
-              <div className="work-legend-item">
-                <img src={icoApp} alt="" width="18" height="18" />
-                App
-              </div>
-              <div className="work-legend-item">
-                <img src={icoWeb} alt="" width="18" height="18" />
-                Web
-              </div>
-              <div className="work-legend-item">
-                <img src={icoCMS} alt="" width="18" height="18" />
-                CMS
-              </div>
-              <div className="work-legend-item">
-                <img src={icoUIUX} alt="" width="18" height="18" />
-                UIUX
-              </div>
+              {workLegends.map((workLegend, index) => (
+                <div className="work-legend-item" key={index}>
+                  <img src={workLegend.img} alt="" width="18" height="18" />
+                  {workLegend.name}
+                </div>
+              ))}
             </div>
           </section>
         </section>
-        <div className="work-board-float-btn" onClick={() => setExpandSidebar(!expandSidebar)}>
-          {(expandSidebar) ? <i className="bi bi-x-lg"></i> : <span>Filter</span>}
+        <div
+          className="work-board-float-btn"
+          onClick={() => setExpandSidebar(!expandSidebar)}
+        >
+          {expandSidebar ? <i className="bi bi-x-lg"></i> : <span>Filter</span>}
         </div>
       </section>
     );
@@ -204,12 +112,11 @@ const Work = () => {
         <p className="font-4xl color-primary">See 100% of our power.</p>
       </section>
       <section className="work-board">
-        <section className="work-category row">
+        <section className={`work-category row`}>
           {Object.entries(workCategories).map(([ctgId, category]) => (
             <div
-              className={`work-category-item col-4 ${
-                activeCategory === ctgId ? "active" : ""
-              }`}
+              className={`work-category-item col-4 
+              ${activeCategory === ctgId ? "active" : ""}`}
               key={ctgId}
               id={ctgId}
               onClick={() => handleWorkFilters(ctgId)}
@@ -223,26 +130,16 @@ const Work = () => {
         <section className="work-legend">
           <p className="work-legend-header">Legend</p>
           <div className="work-legend-item-wrapper font-xs font-normal">
-            <div className="work-legend-item">
-              <img src={icoApp} alt="" width="18" height="18" />
-              App
-            </div>
-            <div className="work-legend-item">
-              <img src={icoWeb} alt="" width="18" height="18" />
-              Web
-            </div>
-            <div className="work-legend-item">
-              <img src={icoCMS} alt="" width="18" height="18" />
-              CMS
-            </div>
-            <div className="work-legend-item">
-              <img src={icoUIUX} alt="" width="18" height="18" />
-              UIUX
-            </div>
+            {workLegends.map((workLegend, index) => (
+              <div className="work-legend-item" key={index}>
+                <img src={workLegend.img} alt="" width="18" height="18" />
+                {workLegend.name}
+              </div>
+            ))}
           </div>
         </section>
       </section>
-      <section className="work-filter">
+      <section className="work-filter" ref={workFilterRef}>
         {workFilterList.every(isResultNone) ? (
           <p className="font-sm my-5 text-center">
             There is no specific project related with the tag name(
@@ -250,13 +147,9 @@ const Work = () => {
           </p>
         ) : (
           <section className="work-filter-item-wrapper my-5">
-            {workFilterList.map((workFilter, index) =>
-              workFilter.isShow ? (
-                <WorkFilterDisplayElement {...workFilter} key={index} />
-              ) : (
-                ""
-              )
-            )}
+            {workFilterList.map((workFilter, index) => (
+              <WorkFilterDisplayElement {...workFilter} key={index} />
+            ))}
           </section>
         )}
       </section>

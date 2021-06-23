@@ -5,7 +5,7 @@ import {
   SocialTwitter,
   SocialInstagram,
   SocialLinkedIn,
-} from "./Images";
+} from "../images";
 
 const Footer = () => {
   const footerTrusts = [
@@ -59,7 +59,7 @@ const Footer = () => {
       <section className="footer-copyright font-sm font-normal text-center mt-2">
         Copyright © Codigo - Mobile App Developer Singapore
       </section>
-      <section className="footer-address font-sm font-normal text-center mb-5">
+      <section className="footer-address font-sm font-normal text-center pb-5">
         +65 6455 9790 • 26 Sin Ming Lane, Midview City #07-115 Singapore 573971
       </section>
     </footer>

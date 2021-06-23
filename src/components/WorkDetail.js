@@ -11,7 +11,7 @@ import {
   imgWDKIWI05,
   imgKIWI,
   ImgArrow,
-} from "./Images";
+} from "../images";
 
 const WorkDetailName = () => (
   <div className="work-detail-name font-3xl">KIWI Auto Marketplace</div>
@@ -38,11 +38,10 @@ const WorkDetailFeature = () => (
 const WorkDetailImage = () => {
   const [imgColor, setImgColor] = useState("");
   useEffect(() => {
-    const fetchColor = async () => {
-      const color = await prominent(imgKIWI, { amount: 1, format: "hex" });
-      setImgColor(color);
-    };
-    fetchColor();
+    const fetchColor = prominent(imgKIWI, { amount: 1, format: "hex" }).then(color => {
+        setImgColor(color);
+      });
+    return () => fetchColor;
   });
 
   const sliderSettings = {
@@ -111,10 +110,10 @@ const LgScreenWorkDetail = () => {
       </section>
       {(
         <>
-          <div className={`work-prev work-arrow-btn ${ showWorkArrows ? 'on' : 'off'}`}>
+          <div className={`work-prev work-arrow-btn ${ showWorkArrows ? '' : 'off'}`}>
             <ImgArrow width="16" height="18" />
           </div>
-          <div className={`work-next work-arrow-btn ${ showWorkArrows ? 'on' : 'off'}`}>
+          <div className={`work-next work-arrow-btn ${ showWorkArrows ? '' : 'off'}`}>
             <ImgArrow alt="" width="16" height="18" />
           </div>
         </>

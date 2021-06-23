@@ -1,5 +1,6 @@
-@keyframes fadein-up {
+@include keyframesCompat(fadein-up) {
   0% {
+    display: none;
     opacity: 0;
     transform: translateY(10%);
   }
@@ -9,8 +10,55 @@
   }
 }
 
-@keyframes fadein-down {
+@include keyframesCompat(fadeout-up) {
   0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    transform: translateY(5%);
+  }
+}
+
+@include keyframesCompat(fadein-down) {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@include keyframesCompat(fadeout-down) {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+}
+
+@include keyframesCompat(scaleup) {
+  0% {
+    display: none;
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+
+@include keyframesCompat(filter-full) {
+  0% {
+    display: none;
     opacity: 0;
     transform: translateY(-20%);
   }
@@ -20,7 +68,19 @@
   }
 }
 
-@keyframes workArrowOff {
+@include keyframesCompat(filter-half) {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateX(-3vw) translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-3vw) translateY(0%);
+  }
+}
+
+@include keyframesCompat(workArrowOff) {
   0% {
     transform: scale(100%);
   }
@@ -30,7 +90,7 @@
   }
 }
 
-@keyframes workArrowOn {
+@include keyframesCompat(workArrowOn) {
   0% {
     transform: scale(0%);
   }

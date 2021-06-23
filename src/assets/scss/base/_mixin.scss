@@ -33,6 +33,24 @@
   }
 }
 
+// Keyframes for Browser Compatibility
+@mixin keyframesCompat($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+}
+
+// Underline Animation for Header Items
 @mixin anim-underline {
   position: relative;
   &::after {
@@ -47,5 +65,68 @@
   }
   &:hover::after {
     width: 100%;
+  }
+}
+
+// Common Work Board Elements - Work Category & Work Legend
+@mixin workBoardElements {
+  .work-category {
+    .work-category-item {
+      position: relative;
+      cursor: pointer;
+      padding: 8px 12px 8px 0px;
+      &::before {
+        content: "";
+        width: 0px;
+        height: 1px;
+        position: absolute;
+        top: 48%;
+        background: $color-primary;
+        transition: width 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+      }
+      // &:hover,
+      &.active {
+        &::before {
+          width: 18px;
+          transition-delay: 0.1s;
+        }
+        .work-category-text {
+          padding-left: 24px;
+          font-weight: bold;
+        }
+      }
+      .work-category-text {
+        transition-duration: 0.4s;
+      }
+    }
+  }
+  .work-legend {
+    margin: 54px auto;
+    @include media($from: 992) {
+      margin: 0px;
+    }
+    .work-legend-header {
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+    .work-legend-item-wrapper {
+      width: 200px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      border-left: 1px solid #000;
+      margin-top: 12px;
+      padding: 6px 0px;
+      .work-legend-item {
+        width: 38%;
+        display: flex;
+        align-items: center;
+        margin: 4px auto;
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }
