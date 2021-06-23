@@ -1106,7 +1106,6 @@ header {
   flex-flow: row wrap;
 }
 .work .work-filter .work-filter-item-wrapper .work-filter-item {
-  width: 100%;
   height: 280px;
   position: relative;
   text-decoration: none;
@@ -1124,28 +1123,24 @@ header {
 .work .work-filter .work-filter-item-wrapper .work-filter-item:hover img {
   transform: scale(1.2);
 }
+@media screen and (max-width: 992px) {
+  .work .work-filter .work-filter-item-wrapper .work-filter-item {
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: falsepx) and (max-width: 992px) {
+  .work .work-filter .work-filter-item-wrapper .work-filter-item {
+    width: 100% !important;
+  }
+}
 @media screen and (min-width: 992px) {
   .work .work-filter .work-filter-item-wrapper .work-filter-item {
-    width: 60%;
     height: 420px;
-  }
-  .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(even) {
-    width: 40%;
-  }
-  .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(3), .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(4), .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(5) {
-    width: 33.33%;
   }
 }
 @media screen and (min-width: 992px) and (max-width: falsepx) {
   .work .work-filter .work-filter-item-wrapper .work-filter-item {
-    width: 60%;
     height: 420px;
-  }
-  .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(even) {
-    width: 40%;
-  }
-  .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(3), .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(4), .work .work-filter .work-filter-item-wrapper .work-filter-item:nth-child(5) {
-    width: 33.33%;
   }
 }
 .work .work-filter .work-filter-item-wrapper .work-filter-item img {
@@ -1160,7 +1155,7 @@ header {
   transition-timing-function: ease-out;
 }
 .work .work-filter .work-filter-item-wrapper .work-filter-item .info-wrapper {
-  padding: 8% 6% 6%;
+  padding: 6% 6% 6%;
   height: 100%;
   display: flex;
   flex-flow: column;
@@ -1200,14 +1195,21 @@ header {
   margin: 4em auto;
   font-family: "Questrial";
 }
-.work-detail .work-detail-wrapper .work-detail-feature-wrapper {
-  display: flex;
-}
-.work-detail .work-detail-wrapper .work-detail-feature-wrapper .work-detail-feature-name {
-  border-right: 1px solid #bbbbbb;
-}
 .work-detail .work-detail-wrapper .work-detail-feature-wrapper .work-detail-feature-content {
   font-family: "Questrial";
+  padding-bottom: 10px;
+}
+@media screen and (min-width: 992px) {
+  .work-detail .work-detail-wrapper .work-detail-feature-wrapper .work-detail-feature-content {
+    border-left: 1px solid #bbbbbb;
+    padding-left: 32px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: falsepx) {
+  .work-detail .work-detail-wrapper .work-detail-feature-wrapper .work-detail-feature-content {
+    border-left: 1px solid #bbbbbb;
+    padding-left: 32px;
+  }
 }
 .work-detail .work-detail-wrapper .work-detail-image-wrapper {
   position: relative;

@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
-import { workCategories, workLegends, workFilters } from "../data";
+import { workCategoriesData, workLegendsData, workFiltersData } from "../data";
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [workFilterList, setWorkFilterList] = useState(workFilters);
+  const [workFilterList, setWorkFilterList] = useState(workFiltersData);
   const workFilterRef = useRef();
   const [showSidebarFloat, setShowSidebarFloat] = useState(false);
   const isResultNone = (object) => object.isShow === false;
@@ -11,7 +11,7 @@ const Work = () => {
   const handleWorkFilters = (ctgId) => {
     setActiveCategory(ctgId);
     setWorkFilterList(
-      workFilters.map((workFilter) => {
+      workFiltersData.map((workFilter) => {
         if (ctgId === "all") {
           workFilter.isShow = true;
         } else {
@@ -34,14 +34,13 @@ const Work = () => {
   const WorkFilterDisplayElement = (workFilter) => {
     return (
       <a
-        className={`work-filter-item ${workFilter.isShow ? "" : "off"}`}
+        className={`work-filter-item ${workFilter.size} ${workFilter.isShow ? "" : "off"}`}
         href={workFilter.url}
       >
-        <h1>{console.log(workFilter.isShow)}</h1>
         <img src={workFilter.img} alt="" />
         <div className="info-wrapper">
           <p className="info-work-category">{workFilter.category}</p>
-          <p className="info-work-name font-xl">{workFilter.name}</p>
+          <p className="info-work-name font-lg">{workFilter.name}</p>
           <div className="info-work-platform-wrapper">
             {workFilter.platforms.map((platform, index) => (
               <div
@@ -67,7 +66,7 @@ const Work = () => {
       >
         <section className={`work-board-sidebar-list`}>
           <section className={`work-category`}>
-            {Object.entries(workCategories).map(([ctgId, category]) => (
+            {Object.entries(workCategoriesData).map(([ctgId, category]) => (
               <div
                 className={`work-category-item ${
                   activeCategory === ctgId ? "active" : ""
@@ -85,7 +84,7 @@ const Work = () => {
           <section className="work-legend">
             <p className="work-legend-header">Legend</p>
             <div className="work-legend-item-wrapper font-xs font-normal">
-              {workLegends.map((workLegend, index) => (
+              {workLegendsData.map((workLegend, index) => (
                 <div className="work-legend-item" key={index}>
                   <img src={workLegend.img} alt="" width="18" height="18" />
                   {workLegend.name}
@@ -113,7 +112,7 @@ const Work = () => {
       </section>
       <section className="work-board">
         <section className={`work-category row`}>
-          {Object.entries(workCategories).map(([ctgId, category]) => (
+          {Object.entries(workCategoriesData).map(([ctgId, category]) => (
             <div
               className={`work-category-item col-4 
               ${activeCategory === ctgId ? "active" : ""}`}
@@ -130,7 +129,7 @@ const Work = () => {
         <section className="work-legend">
           <p className="work-legend-header">Legend</p>
           <div className="work-legend-item-wrapper font-xs font-normal">
-            {workLegends.map((workLegend, index) => (
+            {workLegendsData.map((workLegend, index) => (
               <div className="work-legend-item" key={index}>
                 <img src={workLegend.img} alt="" width="18" height="18" />
                 {workLegend.name}

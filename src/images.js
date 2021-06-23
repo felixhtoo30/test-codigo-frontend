@@ -19,6 +19,8 @@ import imgFURAMA from "./assets/images/FURAMA-0@2x.jpg";
 import imgHBO from "./assets/images/HBO-0@2x.jpg";
 import imgFWD from "./assets/images/FWD-0@2x.jpg";
 import imgKIWI from "./assets/images/KIWI-0@2x.jpg";
+import imgISE from "./assets/images/ISETAN-0@2x.jpg";
+import imgECO from "./assets/images/ECO-0@2x.jpg";
 import imgArrow from "./assets/images/arrow-red.svg";
 import { ReactComponent as ImgArrow } from "./assets/images/arrow-red.svg";
 
@@ -51,6 +53,8 @@ export {
   imgHBO,
   imgFWD,
   imgKIWI,
+  imgISE,
+  imgECO,
   imgWDKIWI01,
   imgWDKIWI02,
   imgWDKIWI03,

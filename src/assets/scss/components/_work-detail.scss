@@ -13,12 +13,13 @@
       font-family: "Questrial";
     }
     .work-detail-feature-wrapper {
-      display: flex;
-      .work-detail-feature-name {
-        border-right: 1px solid #bbbbbb;
-      }
       .work-detail-feature-content {
+        @include media($from: 992) {
+          border-left: 1px solid $color-gray;
+          padding-left: 32px;
+        }
         font-family: "Questrial";
+        padding-bottom: 10px;        
       }
     }
     .work-detail-image-wrapper {

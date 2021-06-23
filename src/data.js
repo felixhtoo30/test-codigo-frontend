@@ -12,9 +12,11 @@ import {
   imgHBO,
   imgFWD,
   imgKIWI,
+  imgISE,
+  imgECO
 } from "./images";
 
-const workCategories = {
+const workCategoriesData = {
   all: "All",
   food: "Food & Beverage",
   media: "Media",
@@ -29,7 +31,7 @@ const workCategories = {
   startup: "Start-ups",
 };
 
-const workLegends = [
+const workLegendsData = [
   {
     name: "App",
     img: icoApp,
@@ -48,14 +50,43 @@ const workLegends = [
   },
 ];
 
-const workFilters = [
+const workFiltersData = [
+  {
+    name: "OCBC Pay Anyone",
+    category: "Transport & Logistics",
+    ctgIds: ["transport"],
+    platforms: [icoApp, icoCMS],
+    img: imgPAO,
+    size: "w-50",
+    isShow: true,
+  },
+  {
+    name: "Ecolab",
+    category: "Others",
+    ctgIds: ["others"],
+    platforms: [icoApp, icoCMS, icoUIUX],
+    img: imgECO,
+    size: "w-25",
+    isShow: true,
+    url: "/work-detail",
+  },
   {
     name: "KIWI Auto Marketplace",
     category: "Others, Start-ups",
     ctgIds: ["others", "startup"],
     platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
     img: imgKIWI,
+    size: "w-25",
+    isShow: true,
     url: "/work-detail",
+  },
+  {
+    name: "Furama Hotels",
+    category: "Lifestyle",
+    ctgIds: ["lifestyle"],
+    platforms: [icoApp, icoCMS],
+    img: imgFURAMA,
+    size: "w-25",
     isShow: true,
   },
   {
@@ -64,14 +95,7 @@ const workFilters = [
     ctgIds: ["transport"],
     platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
     img: imgWTS,
-    isShow: true,
-  },
-  {
-    name: "HBO Go",
-    category: "Retail & Entertainment",
-    ctgIds: ["retail"],
-    platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
-    img: imgHBO,
+    size: "w-25",
     isShow: true,
   },
   {
@@ -80,14 +104,7 @@ const workFilters = [
     ctgIds: ["lifestyle", "retail", "startup"],
     platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
     img: imgRTT,
-    isShow: true,
-  },
-  {
-    name: "OCBC Pay Anyone",
-    category: "Transport & Logistics",
-    ctgIds: ["transport"],
-    platforms: [icoApp, icoCMS],
-    img: imgPAO,
+    size: "w-50",
     isShow: true,
   },
   {
@@ -96,6 +113,16 @@ const workFilters = [
     ctgIds: ["lifestyle"],
     platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
     img: imgYM,
+    size: "w-50",
+    isShow: true,
+  },
+  {
+    name: "HBO Go",
+    category: "Retail & Entertainment",
+    ctgIds: ["retail"],
+    platforms: [icoApp, icoWeb, icoCMS, icoUIUX],
+    img: imgHBO,
+    size: "w-50",
     isShow: true,
   },
   {
@@ -104,24 +131,28 @@ const workFilters = [
     ctgIds: ["transport"],
     platforms: [icoApp],
     img: imgTAP,
+    size: "w-25",
     isShow: true,
   },
-  {
-    name: "Furama Hotels",
-    category: "Lifestyle",
-    ctgIds: ["lifestyle"],
-    platforms: [icoApp, icoCMS],
-    img: imgFURAMA,
-    isShow: true,
-  },
+
   {
     name: "FWD Insurance",
     category: "Lifestyle",
     ctgIds: ["lifestyle"],
     platforms: [icoApp, icoCMS, icoUIUX],
     img: imgFWD,
+    size: "w-50",
+    isShow: true,
+  },
+  {
+    name: "Isetan",
+    category: "Retail & Entertainment",
+    ctgIds: ["retail"],
+    platforms: [icoApp, icoCMS, icoUIUX],
+    img: imgISE,
+    size: "w-25",
     isShow: true,
   },
 ];
 
-export { workCategories, workLegends, workFilters };
+export { workCategoriesData, workLegendsData, workFiltersData };
